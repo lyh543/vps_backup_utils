@@ -1,2 +1,3 @@
-# webapp_backup_utils
-Backup Utilities for Web App deployed on Linux
+# vps_backup_utils
+
+Backup Utilities for Linux VPS with MySQL and other data
