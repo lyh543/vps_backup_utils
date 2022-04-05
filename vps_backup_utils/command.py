@@ -12,10 +12,10 @@ from .common import PathLikeStr
 logger = logging.getLogger(__name__)
 
 
-
 def run_command(cmd: PathLikeStr):
     logger.info(f"Executing: {cmd}")
-    os.system(cmd)
+    if os.system(cmd) != 0:
+        raise Exception(f"Command {cmd} failed")
 
 
 def gzip(target: PathLikeStr):
