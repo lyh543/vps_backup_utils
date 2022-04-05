@@ -7,6 +7,7 @@ Backup Utilities for Linux VPS with MySQL and other data
 ### install dependencies
 
 ```
+pip3 install poetry
 poetry install
 ```
 
