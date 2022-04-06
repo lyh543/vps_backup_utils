@@ -20,8 +20,8 @@ With this package, you can write Python scripts to call cli tools. (need to inst
 ## Usage
 
 1. Run `pip install vps_backup_utils` on your VPS
-2. Write a Python script like the below one, and save on your VPS
-3. Add this script to your VPS's crontab
+2. Write a Python script like the below one, and save on your VPS 
+3. Add this script to your VPS's crontab (execute `crontab -e`, and append `0 4  * * * /path/to/your/script.py` for example, which will run at 4:00 AM every day)
 
 ```python
 #!/usr/bin/env python
@@ -72,7 +72,7 @@ poetry install
 
 ### test on host machine
 
-Write your codes to `main.py`, and just run.
+Write your scripts as `main.py`, and just run it!
 
 ```
 python3 main.py
@@ -88,7 +88,7 @@ poetry run pytest
 
 ```
 docker-compose up -d mysql postgresql
-docker-compose up pytest --build
+docker-compose up pytest --build --force-recreate
 ```
 
 ### build & publish
