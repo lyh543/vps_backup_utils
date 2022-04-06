@@ -1,9 +1,12 @@
 [tool.poetry]
 name = "vps_backup_utils"
-version = "0.0.1"
+version = "0.0.2"
 description = "Backup Utilities for Linux VPS with MySQL and other data"
 authors = ["lyh543 <lyh543@outlook.com>"]
 license = "MIT"
+readme = "README.md"
+repository = "https://github.com/lyh543/vps_backup_utils"
+keywords = ["backup", "vps"]
 
 [tool.poetry.dependencies]
 python = "^3.7"

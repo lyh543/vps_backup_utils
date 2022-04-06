@@ -94,7 +94,5 @@ docker-compose up pytest --build
 ### build & publish
 
 ```
-poetry install
-poetry build
-poetry publish
+poetry update && poetry build && poetry publish
 ```
