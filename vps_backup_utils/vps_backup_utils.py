@@ -62,7 +62,7 @@ class VPSBackupUtils:
         src_folder_path = to_path(src_folder)
         target = self.backup_dest_today / f'{backup_prefix}.tar'
         if gzipped:
-            target += '.gz'
+            target = target.with_suffix('.gz')
         tar(target=target, src=src_folder_path, gzipped=gzipped)
         self.logger.info(f'{backup_prefix}: {src_folder_path} data backup finished')
 
