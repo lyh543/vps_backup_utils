@@ -81,20 +81,25 @@ class VPSBackupUtils:
                     shutil.rmtree(self.backup_dest / filename)
                     self.logger.info(f'{filename} removed, since it is older than {days_to_keep} days')
 
-    def rsync_backups_to_remote(self,
+    def rsync_all_backups_to_remote(self,
                                 host: str,
                                 user: str,
                                 remote_backup_path: PathOrStr,
                                 port='22',
-                                delete_mode=True):
+                                delete_mode=True,
+                                sync_folder_itself=False):
         """
         sync backup folder to remote server.
         need `rsync` in PATH, and ssh key configured.
+        `delete_mode = True` will delete remote files that don't exist on local.
+        `sync_folder_itself = True` will copy the folder to remote,
+        set to `False` to copy the content in it.
         """
-        rsync(local_path=self.backup_dest_today,
+        rsync(local_path=self.backup_dest,
               host=host,
               user=user,
               remote_path=to_path(remote_backup_path, expanduser=False),
               port=port,
-              delete_mode=delete_mode)
+              delete_mode=delete_mode,
+              sync_folder_itself=sync_folder_itself)
         self.logger.info(f'rsync to {user}@{host}:{remote_backup_path} finished')

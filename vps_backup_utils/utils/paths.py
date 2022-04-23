@@ -12,8 +12,14 @@ def to_path(path: PathOrStr, expanduser=True) -> Path:
             path = os.path.expanduser(path)
         return Path(path)
     else:
+        if expanduser:
+            path = path.expanduser()
         return path
 
 
-def quote_path(path: Path) -> str:
-    return pipes.quote(str(path))
+def quote_path(path: Path, append_slash = False) -> str:
+    if append_slash:
+        path_str = str(path / '@')[0:-1]
+    else:
+        path_str = str(path)
+    return pipes.quote(path_str)

@@ -12,7 +12,7 @@ With this package, you can write Python scripts to call cli tools. (need to inst
 ## Supported cli
 
 * [x] `mysqldump`
-* [ ] `pg_dump`
+* [x] `pg_dump` and `pg_dumpall`
 * [x] `tar`
 * [x] `gzip`
 * [x] `rsync` (to remote servers)

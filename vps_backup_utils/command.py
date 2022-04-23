@@ -38,12 +38,17 @@ def rsync(local_path: Path,
           remote_path: Path,
           port: str,
           is_upload=True,
-          delete_mode=True):
+          delete_mode=True,
+          sync_folder_itself=False):
     """
-    sync backup folder to remote server
-    need `rsync` in PATH, and ssh key configured
+    sync backup folder to remote server.
+    need `rsync` in PATH, and ssh key configured.
+    `delete_mode = True` will delete remote files that don't exist on local.
+    `sync_folder_itself = True` will sync the folder to remote,
+    set to `False` to sync the content in it.
     """
-    _local_path = quote_path(local_path)
+    _local_path = quote_path(local_path,
+                             append_slash=not sync_folder_itself)
     _remote_path = f"{user}@{host}:{quote_path(remote_path)}"
     if is_upload:
         paths = f"{_local_path} {_remote_path}"
